@@ -1,7 +1,24 @@
-import Cupcake from "@components/Cupcake";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Cupcake from "../components/Cupcake";
 
 export default function CupcakeList() {
-  // Step 1: get all cupcakes
+  const [cupcakelist, SetCupcakeList] = useState([]);
+  const [accessorieslist, SetaccessoriesList] = useState([]);
+
+  const getAllCupcake = () => {
+    const url = "http://localhost:4000/cupcakes";
+    axios.get(url).then((response) => SetCupcakeList(response.data));
+  };
+
+  const getAllAccessories = () => {
+    const url = "http://localhost:4000/accessories";
+    axios.get(url).then((response) => SetaccessoriesList(response.data));
+  };
+  useEffect(() => {
+    getAllCupcake();
+    getAllAccessories();
+  }, []);
 
   // Step 3: get all accessories
 
@@ -13,12 +30,18 @@ export default function CupcakeList() {
           Filter by{" "}
           <select id="cupcake-select">
             <option value="">---</option>
-            {/* Step 4: add an option for each accessory */}
+            {accessorieslist.map((el) => (
+              <option key={el.id} value={el.id}>
+                {el.name}
+              </option>
+            ))}
           </select>
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
-        {/* Step 2: repeat this block for each cupcake */}
+        {cupcakelist.map((el) => (
+          <Cupcake key={el.cupcake} />
+        ))}
         <li className="cupcake-item">
           <Cupcake />
         </li>
