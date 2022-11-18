@@ -12,5 +12,6 @@ PLEASE FOLLOW THOSE STEP BEFORE BEGIN
 4. Run `npm run setup`.
 5. Run `npm run dev`.
 6. Go to `localhost:3000` with your favorite browser.
+7. YOU DON'T NEED TO NPM INSTALL ANY PACKAGE
 
 
