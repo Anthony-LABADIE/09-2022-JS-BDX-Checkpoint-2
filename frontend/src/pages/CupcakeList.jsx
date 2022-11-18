@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
 export default function CupcakeList() {
@@ -52,9 +53,11 @@ export default function CupcakeList() {
               cupcakefiltre === "" || accessory.accessory_id === cupcakefiltre
           )
           .map((el) => (
-            <li key={el.id} className="cupcake-item">
-              <Cupcake cupcake={el} />
-            </li>
+            <Link to={`/CupcakeDetails/${el.id}`}>
+              <li key={el.id} className="cupcake-item">
+                <Cupcake cupcake={el} />
+              </li>
+            </Link>
           ))}
         {/* end of block */}
       </ul>
