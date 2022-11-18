@@ -16,12 +16,10 @@ export default function CupcakeList() {
     const url = "http://localhost:4000/cupcakes";
     axios.get(url).then((response) => SetCupcakeList(response.data));
   };
-  // console.log(cupcakelist);
   const getAllAccessories = () => {
     const url = "http://localhost:4000/accessories";
     axios.get(url).then((response) => SetaccessoriesList(response.data));
   };
-  // console.log(accessorieslist);
   useEffect(() => {
     getAllCupcake();
     getAllAccessories();
