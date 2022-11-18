@@ -47,7 +47,10 @@ export default function CupcakeList() {
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
         {cupcakelist
-          .filter((accessory) => accessory.accessory_id === cupcakefiltre)
+          .filter(
+            (accessory) =>
+              cupcakefiltre === "" || accessory.accessory_id === cupcakefiltre
+          )
           .map((el) => (
             <li key={el.id} className="cupcake-item">
               <Cupcake cupcake={el} />
