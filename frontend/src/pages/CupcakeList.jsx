@@ -10,7 +10,6 @@ export default function CupcakeList() {
     const url = "http://localhost:4000/cupcakes";
     axios.get(url).then((response) => SetCupcakeList(response.data));
   };
-
   const getAllAccessories = () => {
     const url = "http://localhost:4000/accessories";
     axios.get(url).then((response) => SetaccessoriesList(response.data));
@@ -39,12 +38,12 @@ export default function CupcakeList() {
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
+        {/* Step 2: repeat this block for each cupcake */}
         {cupcakelist.map((el) => (
-          <Cupcake key={el.cupcake} />
+          <li key={el.id} className="cupcake-item">
+            <Cupcake cupcake={el} />
+          </li>
         ))}
-        <li className="cupcake-item">
-          <Cupcake />
-        </li>
         {/* end of block */}
       </ul>
     </>
